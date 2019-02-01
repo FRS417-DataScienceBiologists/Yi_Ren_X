@@ -1,0 +1,81 @@
+---
+title: "Lab 3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+#If a vector contains multiple types of data, it changes all data into character. Could cause problems in the future. So just keep vector in one data type.
+```{r}
+new_vector <- c (1,2,3,"orange","blue")
+new_vector
+class(new_vector)
+```
+
+```{r}
+options(scipen=999) #disables scientific notation
+organism<-c("Human","Mouse","Fruit Fly", "Roundworm","Yeast")
+genomeSizeBP<-c(3000000000,3000000000,135600000,97000000,12100000)
+estGeneCount<-c(30000,30000,13061,19099,6034)
+```
+
+We can combine them into a single vector.
+```{r}
+genome_size <- c(genomeSizeBP, estGeneCount)
+genome_size
+```
+
+And provide names.
+```{r}
+names(genome_size) <- c("genome size BP", "genome size BP", "genome size BP", "genome size BP", "genome size BP", "gene count", "gene count", "gene count", "gene count", "gene count")
+genome_size
+```
+
+You can also select elements of a vector using `[]`
+```{r}
+humans <- genome_size[c(1, 6)]
+humans
+```
+
+**Data Matrices.** Vectors may seem inefficient, but they are a fundamental data structure in R. A data matrix is a little better at organizing the data.
+```{r}
+genome_matrix <- matrix(genome_size, nrow=2, byrow=T)
+genome_matrix
+```
+
+Let's name the columns and rows.
+```{r}
+colnames(genome_matrix) <- organism
+rownames(genome_matrix) <- c("genome size BP", "gene count")
+genome_matrix
+```
+
+Once we have the matrix, we can use functions to make some calculations.
+```{r}
+means <- rowMeans(genome_matrix)
+```
+
+Add them to the matrix
+```{r}
+genome_matrix2 <- cbind(genome_matrix, means)
+genome_matrix2
+```
+
+
+-------------------------------
+*FOCUS OF TODAY: DATA FRAME
+data frame: like a data table in excel, but every column is a vector
+
+6. **Data Frames.**Most data that you will encounter will be structured as a data matrix. Notice that each column is a vector!
+
+#assign a name to each of the column
+```{r}
+genome_frame <- data.frame(organism=organism, genomeSizeBP=genomeSizeBP, estGeneCount=estGeneCount)
+genome_frame
+```
+
