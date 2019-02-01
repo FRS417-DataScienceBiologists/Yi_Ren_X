@@ -1,0 +1,162 @@
+---
+title: "Lab 3_2"
+author: "Yi Ren"
+date: "1/25/2019"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+getwd()
+```
+
+#load the tidyverse library
+```{r}
+library("tidyverse")
+```
+
+#read the fish data
+```{r}
+fish <- readr::read_csv("~/Desktop/class_files-master/Gaeta_etal_CLC_data.csv")
+```
+
+#can view the file
+```{r}
+view(fish)
+```
+
+##summary functions
+
+#names command: outputs the colomn names
+```{r}
+names(fish)
+```
+#head command: outputs the first 6
+```{r}
+head(fish)
+```
+#summary command: outputs summary
+```{r}
+summary(fish)
+```
+#glimpse command
+```{r}
+glimpse(fish)
+```
+#str command
+```{r}
+str(fish)
+```
+
+
+## Practice
+1. Load the data `mammal_lifehistories_v2.csv` and place it into a new object called `mammals`.
+```{r}
+mammals <- readr::read_csv("~/Desktop/class_files-master/mammal_lifehistories_v2.csv")
+```
+2. Provide the dimensions of the data frame.
+# 1440 observations of 13 variables
+
+3. Display the column names in the data frame. 
+```{r}
+names(mammals)
+```
+
+4. Use str() to show the structure of the data frame and its individual columns; compare this to glimpse(). 
+```{r}
+str(mammals)
+```
+
+```{r}
+glimpse(mammals)
+```
+
+
+5. Print out the first few rows of the data using the function head().  
+```{r}
+head(mammals)
+```
+
+
+##Dplyr
+
+#filter():looks through a data frame, pulls out data that meet the entered criteria
+```{r}
+names(fish)
+```
+
+```{r}
+filter(fish,lakeid=="AL")
+```
+#filter: can use >, >=, ==, &(and), |(or), etc.
+```{r}
+filter(fish,length > 350 & lakeid =="AL")
+```
+
+```{r}
+filter(fish, length == 167 | length == 175)
+```
+# ! means not
+```{r}
+filter(fish, !length == 175)
+```
+
+
+##practice
+
+1. Filter the `fish` data to include the samples from lake `DY`.
+```{r}
+filter(fish, lakeid == "DY")
+```
+
+2. Filter the data to include all lakes except AL.
+```{r}
+filter(fish, !lakeid == "AL")
+```
+
+3. Filter the data to include all lakes except AL and DY.
+```{r}
+filter(fish, !lakeid == "AL" & !lakeid == "DY")
+```
+
+4. Filter the data to include all fish with a scale length greater than or equal to 11.
+```{r}
+filter(fish, scalelength >= 11)
+```
+
+5. Filter the data to include fish only from lake AL and with a scalelength greater than or equal to 2 and less than or equal to 4.
+```{r}
+filter(fish, lakeid == "AL",
+       scalelength >= 2 & scalelength <= 4)
+```
+
+
+## Pipes
+#shortcut: shift + command + m
+#pipe the data into the code to make it look cleaner
+```{r}
+fish %>%
+  filter(lakeid == "AL")
+```
+
+## Select()
+#filter out by rows
+```{r}
+fish %>% 
+  select(lakeid, scalelength)
+```
+
+#combine filter & select
+```{r}
+fish %>% 
+  select(lakeid, scalelength) %>% 
+  filter(lakeid == "AL",
+       scalelength >= 2 & scalelength <= 4)
+```
