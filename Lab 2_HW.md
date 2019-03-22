@@ -253,7 +253,7 @@ lmavesleep
 ```
 
 6. What is the average sleep duration for small mammals as we have defined them?
-
+ 
 
 ```r
 smavesleep <- mean(smallmammals$sleep_total)
