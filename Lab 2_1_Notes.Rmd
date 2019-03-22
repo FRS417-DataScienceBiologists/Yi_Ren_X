@@ -29,7 +29,7 @@ We can combine them into a single vector.
 genome_size <- c(genomeSizeBP, estGeneCount)
 genome_size
 ```
-
+ 
 And provide names.
 ```{r}
 names(genome_size) <- c("genome size BP", "genome size BP", "genome size BP", "genome size BP", "genome size BP", "gene count", "gene count", "gene count", "gene count", "gene count")
