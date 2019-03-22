@@ -29,7 +29,7 @@ library("tidyverse")
 ```
 ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.2.1 ──
 ```
-
+ 
 ```
 ## ✔ ggplot2 3.1.0     ✔ purrr   0.2.5
 ## ✔ tibble  2.0.0     ✔ dplyr   0.7.8
