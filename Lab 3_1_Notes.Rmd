@@ -33,7 +33,7 @@ Here we load a .csv file with data on fish scales. We open the file using `read_
 ```{r message=FALSE, warning=FALSE}
 fish <- readr::read_csv("~/Desktop/class_files-master/Gaeta_etal_CLC_data.csv")
 ```
-
+ 
 
 ```{r}
 fish %>%
