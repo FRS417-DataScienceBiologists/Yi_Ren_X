@@ -30,7 +30,7 @@ fish <- readr::read_csv("~/Desktop/class_files-master/Gaeta_etal_CLC_data.csv")
 #can view the file
 ```{r}
 view(fish)
-```
+``` 
 
 ##summary functions
 
