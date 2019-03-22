@@ -124,6 +124,6 @@ if (total_blackjack > total_roulette){
   print ("Stick to roulette")
 }
 ```
-
+ 
 ## Push your final code to [GitHub](https://github.com/FRS417-DataScienceBiologists)
 Make sure that you push your code into the appropriate folder. Also, be sure that you have check the `keep md` file in the knit preferences.
